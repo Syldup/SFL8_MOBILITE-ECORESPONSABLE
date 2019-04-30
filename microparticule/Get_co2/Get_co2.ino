@@ -1,7 +1,7 @@
 int pin = 8;
 unsigned long duration;
 unsigned long starttime;
-unsigned long sampletime_ms = 10000;//sampe 2s ;
+unsigned long sampletime_ms = 30000;//sampe 2s ;
 unsigned long lowpulseoccupancy = 0;
 float ratio = 0;
 float concentration = 0;
@@ -18,23 +18,8 @@ starttime = millis();//get the current time;
 
 }
 
-
 void loop()
-
 {
-
-sensorValue = analogRead(0); // read analog input pin 0
-
-digitalValue = digitalRead(2); 
-if(sensorValue>400)
-{
-digitalWrite(13, HIGH);
-}
-else
-digitalWrite(13, LOW);
-Serial.println(sensorValue, DEC); // prints the value read
-
-delay(10000); // wait 100ms for next reading
 
  duration = pulseIn(pin, LOW);
     lowpulseoccupancy = lowpulseoccupancy+duration;
@@ -50,5 +35,16 @@ delay(10000); // wait 100ms for next reading
         Serial.println(concentration);
         lowpulseoccupancy = 0;
         starttime = millis();
+
+        sensorValue = analogRead(0); // read analog input pin 0
+
+        digitalValue = digitalRead(2); 
+        if(sensorValue>400){
+          digitalWrite(13, HIGH);
+        }
+        else
+        digitalWrite(13, LOW);
+        Serial.print("CO2 : ");
+        Serial.println(sensorValue, DEC); // prints the value read
     }
 }

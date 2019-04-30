@@ -1,7 +1,7 @@
 int pin = 8;
 unsigned long duration;
 unsigned long starttime;
-unsigned long sampletime_ms = 30000;//sampe 30s ;
+unsigned long sampletime_ms = 10000;//sampe 30s ;
 unsigned long lowpulseoccupancy = 0;
 float ratio = 0;
 float concentration = 0;
@@ -17,7 +17,8 @@ void loop()
 {
     duration = pulseIn(pin, LOW);
     lowpulseoccupancy = lowpulseoccupancy+duration;
-
+    //Serial.print(duration);
+    //Serial.print(",");
     if ((millis()-starttime) > sampletime_ms)//if the sampel time == 30s
     {
         ratio = lowpulseoccupancy/(sampletime_ms*10.0);  // Integer percentage 0=>100
