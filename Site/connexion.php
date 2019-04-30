@@ -2,8 +2,8 @@
 	// On définit les 4 variables nécessaires à la connexion MySQL :
 	$hostname = "localhost";
 	$port     = 3306;
-	$user     = "user_mysql";
-	$password = "password_mysql";
+	$user     = "root";
+	$password = "";
 	$nom_base_donnees = "sfl8_bdd";
 
 

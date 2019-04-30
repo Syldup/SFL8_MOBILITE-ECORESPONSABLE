@@ -39,7 +39,7 @@ function updatePoint(data) {
         // add a url property for later ease of access
         feature.set('url', item.media.m);
         // create an appropriate geometry and add it to the feature
-        var coordinate = transform([parseFloat(item.longitude), parseFloat(item.latitude)]);
+        var coordinate = transform([parseFloat(item.x), parseFloat(item.y)]);
         var geometry = new ol.geom.Point(coordinate);
         feature.setGeometry(geometry);
         // add the feature to the source
