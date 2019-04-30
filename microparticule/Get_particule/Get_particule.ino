@@ -24,8 +24,8 @@ void loop()
         concentration = 1.1*pow(ratio,3)-3.8*pow(ratio,2)+520*ratio+0.62; // using spec sheet curve
         Serial.print(lowpulseoccupancy);
         Serial.print(",");
-        Serial.print(ratio);
-        Serial.print(",");
+        Serial.println(ratio);
+        Serial.print("concentration : ");
         Serial.println(concentration);
         lowpulseoccupancy = 0;
         starttime = millis();
