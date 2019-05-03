@@ -20,7 +20,7 @@
 
   <!-- Custom CSS -->
   <link href="css/stylish-portfolio.min.css" rel="stylesheet">
-  
+
     <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
     <link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css">
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
@@ -79,8 +79,7 @@
       <div class="row">
         <div class="col-lg-10 mx-auto">
           <h2>Stylish Portfolio is the perfect theme for your next project!</h2>
-          <p class="lead mb-5">This theme features a flexible, UX friendly sidebar menu and stock photos from our friends at
-            <a href="https://unsplash.com/">Unsplash</a>!</p>
+          <p class="lead mb-5">yukujkhfdkghf</p>
           <a class="btn btn-dark btn-xl js-scroll-trigger" href="#services">What We Offer</a>
         </div>
       </div>
@@ -120,7 +119,7 @@
           <h4>
             <strong>Favorited</strong>
           </h4>
-          <p class="text-faded mb-0">Millions of users
+          <p class="text-faded mb-0">Millions d'utilisateurs
             <i class="fas fa-heart"></i>
             Start Bootstrap!</p>
         </div>
@@ -258,7 +257,26 @@
   <!-- Custom scripts for this template -->
   <script src="js/stylish-portfolio.min.js"></script>
 
-  <script src="script.js" type="text/javascript" language="javascript" charset="utf-8"></script>
+  <script src="script.js" type="text/javascript" language="javascript" charset="utf-8">
+    var transform = ol.proj.getTransform('EPSG:4326', 'EPSG:3857');
+    <?php
+      $reponse = $bdd->query('SELECT * FROM gps');
+      while ($donnees = $reponse->fetch())
+        {
+          ?>
+             var feature = new ol.Feature({
+               geometry : new ol.geom.Point([<?php echo $donnees['x'] ?>, <?php echo $donnees['y'] ?>]);
+             });
+             // add the feature to the source
+             vectorSource.addFeature(feature);
+             <?php
+        }
+
+      $reponse->closeCursor(); // Termine le traitement de la requête
+      ?>
+    </script>
+
+
 
 </body>
 
