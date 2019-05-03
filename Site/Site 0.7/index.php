@@ -29,7 +29,6 @@
 	<!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
 	<?php
     require ("connexion.php");
-    $variable = mysql_query("SELECT x,y FROM gps'%967' ");
   ?>
 </head>
 
