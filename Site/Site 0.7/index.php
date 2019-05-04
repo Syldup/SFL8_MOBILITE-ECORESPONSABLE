@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
 
@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SFL8 - Yokoko</title>
+  <title>Sfl8 - Yokoko</title>
 
   <!-- Bootstrap Core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -20,18 +20,16 @@
 
   <!-- Custom CSS -->
   <link href="css/stylish-portfolio.min.css" rel="stylesheet">
-  
+
     <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
     <link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css">
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
     <script src="https://openlayers.org/en/v4.6.5/build/ol.js"></script>
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
-	
 	<?php
     require ("connexion.php");
   ?>
-  
 </head>
 
 <body id="page-top">
@@ -43,7 +41,7 @@
   <nav id="sidebar-wrapper">
     <ul class="sidebar-nav">
       <li class="sidebar-brand">
-        <a class="js-scroll-trigger" href="#page-top">Hello</a>
+        <a class="js-scroll-trigger" href="#page-top">Start Bootstrap</a>
       </li>
       <li class="sidebar-nav-item">
         <a class="js-scroll-trigger" href="#page-top">Home</a>
@@ -81,8 +79,7 @@
       <div class="row">
         <div class="col-lg-10 mx-auto">
           <h2>Stylish Portfolio is the perfect theme for your next project!</h2>
-          <p class="lead mb-5">This theme features a flexible, UX friendly sidebar menu and stock photos from our friends at
-            <a href="https://unsplash.com/">Unsplash</a>!</p>
+          <p class="lead mb-5">yukujkhfdkghf</p>
           <a class="btn btn-dark btn-xl js-scroll-trigger" href="#services">What We Offer</a>
         </div>
       </div>
@@ -122,7 +119,7 @@
           <h4>
             <strong>Favorited</strong>
           </h4>
-          <p class="text-faded mb-0">Millions of users
+          <p class="text-faded mb-0">Millions d'utilisateurs
             <i class="fas fa-heart"></i>
             Start Bootstrap!</p>
         </div>
@@ -241,7 +238,7 @@
           </a>
         </li>
       </ul>
-      <p class="text-muted small mb-0">Copyright &copy; SFL8 - Yokoko</p>
+      <p class="text-muted small mb-0">Copyright &copy; Your Website 2019</p>
     </div>
   </footer>
 
@@ -260,7 +257,26 @@
   <!-- Custom scripts for this template -->
   <script src="js/stylish-portfolio.min.js"></script>
 
-  <script src="script.js" type="text/javascript" language="javascript" charset="utf-8"></script>
+  <script src="script.js" type="text/javascript" language="javascript" charset="utf-8">
+    var transform = ol.proj.getTransform('EPSG:4326', 'EPSG:3857');
+    <?php
+      $reponse = $bdd->query('SELECT * FROM gps');
+      while ($donnees = $reponse->fetch())
+        {
+          ?>
+             var feature = new ol.Feature({
+               geometry : new ol.geom.Point([<?php echo $donnees['x'] ?>, <?php echo $donnees['y'] ?>]);
+             });
+             // add the feature to the source
+             vectorSource.addFeature(feature);
+             <?php
+        }
+
+      $reponse->closeCursor(); // Termine le traitement de la requête
+      ?>
+    </script>
+
+
 
 </body>
 

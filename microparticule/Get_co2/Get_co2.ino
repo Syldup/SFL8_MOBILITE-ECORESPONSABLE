@@ -1,24 +1,29 @@
 int pin = 8;
 unsigned long duration;
 unsigned long starttime;
-unsigned long sampletime_ms = 10000;//sampe 30s ;
+unsigned long sampletime_ms = 30000;//sampe 2s ;
 unsigned long lowpulseoccupancy = 0;
 float ratio = 0;
 float concentration = 0;
-
-void setup() 
+int sensorValue;
+int digitalValue;
+void setup()
 {
-    Serial.begin(9600);
-    pinMode(pin,INPUT);
-    starttime = millis();//get the current time;
+
+Serial.begin(9600); // sets the serial port to 9600
+pinMode(13, OUTPUT);
+pinMode( 3, INPUT);
+pinMode(pin,INPUT);
+starttime = millis();//get the current time;
+
 }
 
-void loop() 
+void loop()
 {
-    duration = pulseIn(pin, LOW);
+
+ duration = pulseIn(pin, LOW);
     lowpulseoccupancy = lowpulseoccupancy+duration;
-    //Serial.print(duration);
-    //Serial.print(",");
+
     if ((millis()-starttime) > sampletime_ms)//if the sampel time == 30s
     {
         ratio = lowpulseoccupancy/(sampletime_ms*10.0);  // Integer percentage 0=>100
@@ -30,5 +35,16 @@ void loop()
         Serial.println(concentration);
         lowpulseoccupancy = 0;
         starttime = millis();
+
+        sensorValue = analogRead(0); // read analog input pin 0
+
+        digitalValue = digitalRead(2); 
+        if(sensorValue>400){
+          digitalWrite(13, HIGH);
+        }
+        else
+        digitalWrite(13, LOW);
+        Serial.print("CO2 : ");
+        Serial.println(sensorValue, DEC); // prints the value read
     }
 }

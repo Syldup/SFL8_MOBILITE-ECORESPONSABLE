@@ -7,7 +7,7 @@ var vector = new ol.layer.Vector({
    style: new ol.style.Style({
      image: new ol.style.Circle({
        radius: 5,
-       fill: new ol.style.Fill({color: '#0000CC'})
+       fill: new ol.style.Fill({color: '#FFFFFF'})
      })
    })
  })
@@ -29,7 +29,7 @@ var vector = new ol.layer.Vector({
 	})
 });
 
-function updatePoint(data) {
+/*function updatePoint(data) {
       // we need to transform the geometries into the view's projection
       var transform = ol.proj.getTransform('EPSG:4326', 'EPSG:3857');
       // loop over the items in the response
@@ -45,4 +45,4 @@ function updatePoint(data) {
         // add the feature to the source
         vectorSource.addFeature(feature);
       });
-    }
+    }*/
