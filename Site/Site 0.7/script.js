@@ -1,28 +1,20 @@
-
 var vectorSource = new ol.source.Vector();
 
-var source = new ol.source.ImageWMS({
-       url: 'img/point.png',
-     });
-source.on('imageloadstart', function() {
-  progress.addLoading();
-});
-source.on('imageloadend', function() {
-  progress.addLoaded();
-});
-source.on('imageloaderror', function() {
-  progress.addLoaded();
-});
-vectorSource.addFeature(source);
+var styles = {
+  'a': new  ol.style.Style({
+    image: new ol.style.Icon(/** @type {module:ol/style/Icon~Options} */ ({
+          src: 'img/point.png'
+        }))
+  }),
+  'b': new ol.style.Style({
+    image: new ol.style.Icon(/** @type {module:ol/style/Icon~Options} */ ({
+          src: 'img/co2.png'
+        }))
+  }),
+}
 
 var vector = new ol.layer.Vector({
-   title: 'coordinates',
-   source: vectorSource,
-   layers: [
-          new ol.layer.Image({source: source})
-        ]
-     })
-   })
+   source: vectorSource
  })
 
 
@@ -32,9 +24,9 @@ var vector = new ol.layer.Vector({
   target: document.getElementById('map'),
   layers : [
     new ol.layer.Tile({
-    source: new ol.source.XYZ({
-      url: 'https://tile.jawg.io/d5083f83-4b58-4bca-8a5c-c4888af10610/{z}/{x}/{y}.png?access-token=7R3sFk6cRCKtNZ8SO9RwYnpZsGEUs48u4wQRlnbzJcC5M0TzX8mLIsboUE3URvq2'
-    })
+      source: new ol.source.XYZ({
+        url: 'https://tile.jawg.io/d5083f83-4b58-4bca-8a5c-c4888af10610/{z}/{x}/{y}.png?access-token=7R3sFk6cRCKtNZ8SO9RwYnpZsGEUs48u4wQRlnbzJcC5M0TzX8mLIsboUE3URvq2'
+      })
     }),
     vector
   ],
