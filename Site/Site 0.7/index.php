@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>sfl8 - Yokoko</title>
+  <title>SFL8 - Yokoko</title>
 
   <!-- Bootstrap Core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -66,7 +66,7 @@
     <div class="container text-center my-auto">
       <h1 class="mb-1">SFL8 - Yokoko</h1>
       <h3 class="mb-5">
-        <em>Le projet Sfl8 permet une prise de conscience de la qualité de la route et de l'environnement.</em>
+        <em>Le projet Sfl8 permet une prise de</br>conscience de la qualité de la route et de l'environnement.</em>
       </h3>
       <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">En savoir plus</a>
     </div>
@@ -91,46 +91,44 @@
     <div class="container">
       <div class="content-section-heading">
         <h3 class="text-secondary mb-0">Services</h3>
-        <h2 class="mb-5">Ce que nous offrons</h2>
+        <h2 class="mb-5">Tous les services disponibles</h2>
       </div>
       <div class="row">
         <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
           <span class="service-icon rounded-circle mx-auto mb-3">
-            <i class="icon-screen-smartphone"></i>
+            <i class="icon-power"></i>
           </span>
           <h4>
-            <strong>Responsive</strong>
+            <strong>Systèmes embarqués</strong>
           </h4>
-          <p class="text-faded mb-0">Looks great on any screen size!</p>
+          <p class="text-faded mb-0">Un système embarquant tous les capteurs.</p>
         </div>
         <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
           <span class="service-icon rounded-circle mx-auto mb-3">
-            <i class="icon-pencil"></i>
+            <i class="icon-rocket"></i>
           </span>
           <h4>
-            <strong>Redesigned</strong>
+            <strong>Base de données</strong>
           </h4>
-          <p class="text-faded mb-0">Freshly redesigned for Bootstrap 4.</p>
+          <p class="text-faded mb-0">Une base de données actualiser toutes les 5 minutes.</p>
         </div>
         <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
           <span class="service-icon rounded-circle mx-auto mb-3">
-            <i class="icon-like"></i>
+            <i class="icon-map"></i>
           </span>
           <h4>
-            <strong>Favorited</strong>
+            <strong>Cartographie</strong>
           </h4>
-          <p class="text-faded mb-0">Millions d'utilisateurs
-            <i class="fas fa-heart"></i>
-            Start Bootstrap!</p>
+          <p class="text-faded mb-0">Une map sous openlayers dynamique et fluide !</p>
         </div>
         <div class="col-lg-3 col-md-6">
           <span class="service-icon rounded-circle mx-auto mb-3">
-            <i class="icon-mustache"></i>
+            <i class="icon-screen-desktop"></i>
           </span>
           <h4>
-            <strong>Question</strong>
+            <strong>Site web</strong>
           </h4>
-          <p class="text-faded mb-0">I mustache you a question...</p>
+          <p class="text-faded mb-0">Un site web design et responsive !</p>
         </div>
       </div>
     </div>
@@ -199,15 +197,6 @@
           </a>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Call to Action -->
-  <section class="content-section bg-primary text-white">
-    <div class="container text-center">
-      <h2 class="mb-4">Si vous ne voulez pas voir la fin du projet ne cliquez pas dessus</h2>
-      <a href="#" class="btn btn-xl btn-light mr-4">Click Me!</a>
-      <a href="#" class="btn btn-xl btn-dark">Look at Me!</a>
     </div>
   </section>
 
