@@ -273,6 +273,7 @@
 
              var msg = "<?= "<strong>Anomalie<br/>Type</strong> = ".$donnees['type']."<br/><strong>Date</strong> = ".$donnees['time'] ?>";
              feature.set("msg", msg);
+             feature.setStyle(styles['a']);
              vectorSource.addFeature(feature);
              <?php
         }
@@ -283,9 +284,9 @@
           ?>
              var geom = new ol.geom.Point(transform([<?= $donnees['y'].", ".$donnees['x'] ?>]));
              var feature = new ol.Feature(geom);
-             var msg = "<?= "<strong>Qualitée de l'air<br/>CO2</strong> =".$donnees['co2']."<br/><strong>Pollution</strong> =".$donnees['pollution']."<br/><strong>Date</strong> = ".$donnees['time'] ?>";
+             var msg = "<?= "<strong>Qualitée de l'air<br/>CO2</strong> =".$donnees['co2']."<br/><strong>Pollution</strong> =".$donnees['pollution']."<br/><strong>Il y a </strong>".$donnees['time'] ?>";
              feature.set("msg", msg);
-
+             feature.setStyle(styles['b']);
 
              vectorSource.addFeature(feature);
             <?php
