@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Sfl8 - Yokoko</title>
+  <title>sfl8 - Yokoko</title>
 
   <!-- Bootstrap Core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -41,22 +41,22 @@
   <nav id="sidebar-wrapper">
     <ul class="sidebar-nav">
       <li class="sidebar-brand">
-        <a class="js-scroll-trigger" href="#page-top">Start Bootstrap</a>
+        <a class="js-scroll-trigger" href="#page-top">Yokoko</a>
       </li>
       <li class="sidebar-nav-item">
-        <a class="js-scroll-trigger" href="#page-top">Home</a>
+        <a class="js-scroll-trigger" href="#page-top">Accueil</a>
       </li>
       <li class="sidebar-nav-item">
-        <a class="js-scroll-trigger" href="#about">About</a>
+        <a class="js-scroll-trigger" href="#about">projet</a>
       </li>
       <li class="sidebar-nav-item">
         <a class="js-scroll-trigger" href="#services">Services</a>
       </li>
       <li class="sidebar-nav-item">
-        <a class="js-scroll-trigger" href="#portfolio">Portfolio</a>
+        <a class="js-scroll-trigger" href="#portfolio">Tâches</a>
       </li>
       <li class="sidebar-nav-item">
-        <a class="js-scroll-trigger" href="#contact">Contact</a>
+        <a class="js-scroll-trigger" href="#contact">Final</a>
       </li>
     </ul>
   </nav>
@@ -64,23 +64,23 @@
   <!-- Header -->
   <header class="masthead d-flex">
     <div class="container text-center my-auto">
-      <h1 class="mb-1">Stylish Portfolio</h1>
+      <h1 class="mb-1">SFL8 - Yokoko</h1>
       <h3 class="mb-5">
-        <em>A Free Bootstrap Theme by Start Bootstrap</em>
+        <em>Le projet Sfl8 permet une prise de conscience de la qualité de la route et de l'environnement.</em>
       </h3>
-      <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
+      <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">En savoir plus</a>
     </div>
     <div class="overlay"></div>
   </header>
 
-  <!-- About -->
+  <!-- A propos -->
   <section class="content-section bg-light" id="about">
     <div class="container text-center">
       <div class="row">
         <div class="col-lg-10 mx-auto">
-          <h2>Stylish Portfolio is the perfect theme for your next project!</h2>
-          <p class="lead mb-5">yukujkhfdkghf</p>
-          <a class="btn btn-dark btn-xl js-scroll-trigger" href="#services">What We Offer</a>
+          <h2>Le projet</h2>
+          <p class="lead mb-5">le projet est constitué ............</p>
+          <a class="btn btn-dark btn-xl js-scroll-trigger" href="#services">Tâches</a>
         </div>
       </div>
     </div>
@@ -91,7 +91,7 @@
     <div class="container">
       <div class="content-section-heading">
         <h3 class="text-secondary mb-0">Services</h3>
-        <h2 class="mb-5">What We Offer</h2>
+        <h2 class="mb-5">Ce que nous offrons</h2>
       </div>
       <div class="row">
         <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
@@ -139,9 +139,9 @@
   <!-- Callout -->
   <section class="callout">
     <div class="container text-center">
-      <h2 class="mx-auto mb-5">Welcome to
-        <em>your</em>
-        next website!</h2>
+      <h2 class="mx-auto mb-5">Bienvenue dans
+        <em>notre</em>
+        projet!</h2>
       <a class="btn btn-primary btn-xl" href="https://startbootstrap.com/template-overviews/stylish-portfolio/">Download Now!</a>
     </div>
   </section>
@@ -150,15 +150,15 @@
   <section class="content-section" id="portfolio">
     <div class="container">
       <div class="content-section-heading text-center">
-        <h3 class="text-secondary mb-0">Portfolio</h3>
-        <h2 class="mb-5">Recent Projects</h2>
+        <h3 class="text-secondary mb-0">TÂCHES</h3>
+        <h2 class="mb-5">Les différentes tâches</h2>
       </div>
       <div class="row no-gutters">
         <div class="col-lg-6">
           <a class="portfolio-item" href="#">
             <span class="caption">
               <span class="caption-content">
-                <h2>Stationary</h2>
+                <h2>Communes</h2>
                 <p class="mb-0">A yellow pencil with envelopes on a clean, blue backdrop!</p>
               </span>
             </span>
@@ -169,7 +169,7 @@
           <a class="portfolio-item" href="#">
             <span class="caption">
               <span class="caption-content">
-                <h2>Ice Cream</h2>
+                <h2>Romain</h2>
                 <p class="mb-0">A dark blue background with a colored pencil, a clip, and a tiny ice cream cone!</p>
               </span>
             </span>
@@ -180,7 +180,7 @@
           <a class="portfolio-item" href="#">
             <span class="caption">
               <span class="caption-content">
-                <h2>Strawberries</h2>
+                <h2>Djessy</h2>
                 <p class="mb-0">Strawberries are such a tasty snack, especially with a little sugar on top!</p>
               </span>
             </span>
@@ -191,7 +191,7 @@
           <a class="portfolio-item" href="#">
             <span class="caption">
               <span class="caption-content">
-                <h2>Workspace</h2>
+                <h2>Sylvain</h2>
                 <p class="mb-0">A yellow workspace with some scissors, pencils, and other objects.</p>
               </span>
             </span>
@@ -205,7 +205,7 @@
   <!-- Call to Action -->
   <section class="content-section bg-primary text-white">
     <div class="container text-center">
-      <h2 class="mb-4">The buttons below are impossible to resist...</h2>
+      <h2 class="mb-4">Si vous ne voulez pas voir la fin du projet ne cliquez pas dessus</h2>
       <a href="#" class="btn btn-xl btn-light mr-4">Click Me!</a>
       <a href="#" class="btn btn-xl btn-dark">Look at Me!</a>
     </div>
@@ -229,17 +229,12 @@
           </a>
         </li>
         <li class="list-inline-item">
-          <a class="social-link rounded-circle text-white mr-3" href="#">
-            <i class="icon-social-twitter"></i>
-          </a>
-        </li>
-        <li class="list-inline-item">
-          <a class="social-link rounded-circle text-white" href="#">
+          <a class="social-link rounded-circle text-white" href="https://github.com/Syldup/SFL8_MOBILITE-ECORESPONSABLE" onclick="window.open(this.href); return false;">
             <i class="icon-social-github"></i>
           </a>
         </li>
       </ul>
-      <p class="text-muted small mb-0">Copyright &copy; Your Website 2019</p>
+      <p class="text-muted small mb-0">Copyright &copy; Yokoko 2019</p>
     </div>
   </footer>
 
