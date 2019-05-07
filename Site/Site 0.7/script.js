@@ -1,16 +1,30 @@
 
 var vectorSource = new ol.source.Vector();
 
+var source = new ol.source.ImageWMS({
+       url: 'img/point.png',
+     });
+source.on('imageloadstart', function() {
+  progress.addLoading();
+});
+source.on('imageloadend', function() {
+  progress.addLoaded();
+});
+source.on('imageloaderror', function() {
+  progress.addLoaded();
+});
+vectorSource.addFeature(source);
+
 var vector = new ol.layer.Vector({
    title: 'coordinates',
    source: vectorSource,
-   style: new ol.style.Style({
-     image: new ol.style.Circle({
-       radius: 5,
-       fill: new ol.style.Fill({color: '#0000CC'})
+   layers: [
+          new ol.layer.Image({source: source})
+        ]
      })
    })
  })
+
 
  var center = ol.proj.transform([-1.563389, 47.210917], 'EPSG:4326', 'EPSG:3857');
 
