@@ -214,7 +214,8 @@
   <!-- Map -->
   <section id="contact" class="map">
     <small>
-		<div id="map" class="map">
+		<div id="map" class="map"><div id="popup"></div></div>
+
     </small>
   </section>
 
@@ -257,22 +258,40 @@
   <!-- Custom scripts for this template -->
   <script src="js/stylish-portfolio.min.js"></script>
 
-  <script src="script.js" type="text/javascript" language="javascript" charset="utf-8">
+  <script src="script.js" type="text/javascript" language="javascript" charset="utf-8"></script>
+  <script>
     var transform = ol.proj.getTransform('EPSG:4326', 'EPSG:3857');
     <?php
-      $reponse = $bdd->query('SELECT * FROM gps');
-      while ($donnees = $reponse->fetch())
+      $anomalies = $bdd->query('SELECT a.type, gps.x, gps.y, gps.time
+                                FROM anomalie a
+                                INNER JOIN gps
+                                ON a.idGps = gps.id');
+      $releves = $bdd->query('SELECT r.co2, r.pollution, gps.x, gps.y, gps.time
+                              FROM releve r
+                              INNER JOIN gps
+                              ON r.idGps = gps.id');
+      while ($donnees = $anomalies->fetch())
         {
           ?>
-             var feature = new ol.Feature({
-               geometry : new ol.geom.Point([<?php echo $donnees['x'] ?>, <?php echo $donnees['y'] ?>]);
-             });
-             // add the feature to the source
+             var geom = new ol.geom.Point(transform([<?php echo $donnees['y'] ?>, <?php echo $donnees['x'] ?>]));
+             var feature = new ol.Feature(geom);
+             vectorSource.addFeature(feature);
+             <?php
+             echo var_dump(vectorSource);
+        }
+        $anomalies->closeCursor();
+
+        while ($donnees = $releves->fetch())
+        {
+          ?>
+             var geom = new ol.geom.Point(transform([<?php echo $donnees['y'] ?>, <?php echo $donnees['x'] ?>]));
+             var feature = new ol.Feature(geom);
              vectorSource.addFeature(feature);
              <?php
         }
 
-      $reponse->closeCursor(); // Termine le traitement de la requête
+
+      $releves->closeCursor(); // Termine le traitement de la requête
       ?>
     </script>
 
