@@ -20,6 +20,7 @@
 
   <!-- Custom CSS -->
   <link href="css/stylish-portfolio.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
 
     <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
     <link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css">
@@ -201,7 +202,7 @@
   </section>
 
   <!-- Map -->
-  <section id="contact" class="map">
+  <section id="contact" class="sectionMap">
 		<div id="map" class="map"><div id="popup"></div></div>
   </section>
 
