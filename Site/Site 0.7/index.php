@@ -27,9 +27,9 @@
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
     <script src="https://openlayers.org/en/v4.6.5/build/ol.js"></script>
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-	<!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
+
 	<?php
-    require ("connexion.php");
+    require ("connexion.php");//Permet de faire le lien avec connexion.php liée à la base de données
   ?>
 </head>
 
@@ -210,11 +210,6 @@
   <footer class="footer text-center">
     <div class="container">
       <ul class="list-inline mb-5">
-        <li class="list-inline-item">
-          <a class="social-link rounded-circle text-white mr-3" href="#">
-            <i class="icon-social-facebook"></i>
-          </a>
-        </li>
         <li class="list-inline-item">
           <a class="social-link rounded-circle text-white" href="https://github.com/Syldup/SFL8_MOBILITE-ECORESPONSABLE" onclick="window.open(this.href); return false;">
             <i class="icon-social-github"></i>
