@@ -2,8 +2,12 @@ import cv2
 import time
 import piexif
 import pathlib
-from Classe.capteur import Capteur
 from threading import Thread
+
+if __name__ == "__main__":
+    from capteur import Capteur
+else:
+    from Classe.capteur import Capteur
 
 
 class Camera(Capteur):
@@ -17,21 +21,19 @@ class Camera(Capteur):
         directory.mkdir(parents=True, exist_ok=True)
 
     def open_win(self):
-        if not self.update_frame():
-            return None
+        self.update_frame()
 
         def func():
             self.windows_open = True
             cv2.namedWindow("Camera")
-            while True:
-                if not self.update_frame():
-                    break
+            while self.windows_open:
+                self.update_frame()
                 cv2.imshow("Camera", self.frame)
                 k = cv2.waitKey(1)
 
                 if k % 256 == 27 or k % 256 == ord('q'):  # ESC pressed
                     print("Escape hit, closing...")
-                    break
+                    self.windows_open = False
 
                 elif k % 256 == 32:  # SPACE pressed
                     path = self.get_value()
@@ -39,7 +41,6 @@ class Camera(Capteur):
 
             self.cam.release()
             cv2.destroyAllWindows()
-            self.windows_open = False
 
         Thread(target=func).start()
 
@@ -61,21 +62,24 @@ class Camera(Capteur):
     def update_frame(self):
         ret, frame = self.cam.read()
         if not ret:
-            return False
+            self.windows_open = False
+            msg = "Camera:update_frame : ret is False\n"
+            msg += "La camera n'est pas branche ou detecte\n"
+            msg += "- Brancher la camera et redemarer la raspberry"
+            raise IOError(msg)
 
         frame = cv2.flip(frame, 1)
         self.frame = cv2.flip(frame, -1)
-        return True
 
     def get_value(self):
         if not self.windows_open:
-            if not self.update_frame():
-                return None
+            self.update_frame()
 
         str_time = time.strftime("%Y-%m-%d_%H%M%S")
         img_name = "{}/{}.jpg".format(self.source, str_time)
         if not cv2.imwrite(img_name, self.frame):
-            raise IOError('Camera:get_value : Could not write image')
+            self.windows_open = False
+            raise IOError("Camera:get_value : Could not write image")
         print("{} written!".format(img_name))
 
         Camera.set_metadata(img_name)
@@ -94,6 +98,6 @@ if __name__ == "__main__":
 
     cam.open_win()
 
-    for i in range(10):
-        print(cam.get_value())
+    for i in range(3):
         time.sleep(1)
+        print(cam.get_value())
