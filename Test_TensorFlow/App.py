@@ -18,14 +18,13 @@ class App:
         self.capt["cam"] = Camera(self.main_path+"/IMG")
         self.capt["gps"] = None
         self.capt["MQ1365"] = None
+        self.capt["particul"] = None
 
     def start(self):
         self.capt["cam"].open_win()
-        i = 10
-        while i > 0:
+        for i in range(3):
             path = self.capt["cam"].get_value()
-
-            i -= 1
+            print(path)
             time.sleep(self.frequance_relever)
 
 
