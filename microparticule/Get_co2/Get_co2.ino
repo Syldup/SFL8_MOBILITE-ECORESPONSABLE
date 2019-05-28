@@ -28,15 +28,14 @@ void loop(){
         ratio = lowpulseoccupancy/(sampletime_ms*10.0);  // intégration du pourcentage 0=>100
         // Calcule de la concentration avec une fonction trigonométrique du 3ème degrès
         concentration = 1.1*pow(ratio,3)-3.8*pow(ratio,2)+520*ratio+0.62;
-        Serial.print("Concentration : ");
-        Serial.println(concentration);// affichage concentration
+        Serial.print(concentration);// affichage concentration
         lowpulseoccupancy = 0;
         starttime = millis();
         
         //***Capteur de CO2***
         
         float ppm = gasSensor.getPPM(); 
-        Serial.print ("ppm: "); 
+        Serial.print (","); 
         Serial.println (ppm); 
 
     }
