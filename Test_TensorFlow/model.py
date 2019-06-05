@@ -25,7 +25,7 @@ class MyModel:
             self.feature_extractor_url = url
             self.IMAGE_SIZE = hub.get_expected_image_size(hub.Module(url))
 
-    def choice_feature_extractor(self):
+    def choice_feature_extractor(self, idx = -1):
         print(" - Feature Extractor - ")
         urls_layer = dict()
         urls_layer["inception_v3 - iV3"] = "https://tfhub.dev/google/imagenet/inception_v3/feature_vector/3"
@@ -35,7 +35,6 @@ class MyModel:
         for i, k in enumerate(key):
             print("{} - {} : {}".format(i, k, urls_layer[k]))
 
-        idx = -1
         while idx < 0 or idx >= len(key):
             idx = int(input("index_feature_vector = "))
         self.set_feature_extractor(urls_layer[key[idx]])
@@ -53,7 +52,7 @@ class MyModel:
         valid_generator = tf.keras.preprocessing.image.ImageDataGenerator(rescale=1./ 255)
         self.valid_generator = valid_generator.flow_from_directory(self.data_root+"\\valid", target_size=self.IMAGE_SIZE)
 
-    def choice_dataset_path(self):
+    def choice_dataset_path(self, idx = -1):
         print(" - Dataset - ")
         dataset_path = os.getcwd() + "\\dataset\\"
         if os.path.isdir(dataset_path):
@@ -61,7 +60,6 @@ class MyModel:
             for i, v in enumerate(name_paths):
                 print("{} - {}".format(i, v))
 
-                idx = -1
             while idx < 0 or idx >= len(name_paths):
                 idx = int(input("index_dataset_path = "))
 
@@ -153,7 +151,7 @@ class MyModel:
         steps_per_epoch = self.train_generator.samples // self.train_generator.batch_size
         batch_stats = CollectBatchStats()
 
-        self.model.fit((item for item in self.train_generator), epochs=1,
+        self.model.fit((item for item in self.train_generator), epochs=5,
                   steps_per_epoch=steps_per_epoch,
                   callbacks=[batch_stats])
 
@@ -202,21 +200,27 @@ class MyModel:
         self.sess.run(init)
 
         from tkinter.filedialog import askdirectory
-        img_dir = askdirectory()
+        img_dir = askdirectory() + "/"
+        imgs = list()
         if os.path.isdir(img_dir):
-            imgs_name = [path for path in os.listdir(img_dir) if  path[path.rfind(".")] in [".jpg", ".png", ".jfif", ".jpeg"]]
-            imgs = list()
+            imgs_name = [path for path in os.listdir(img_dir) if  path[path.rfind("."):] in [".jpg", ".png", ".jfif", ".jpeg"]]
             for img_name in imgs_name:
-                img = tf.read_file(img_dir + img_name).resize(self.IMAGE_SIZE)
-                imgs.append(np.array(img) / 255.0)
+                img = tf.keras.preprocessing.image.load_img(img_dir + img_name, target_size=(*self.IMAGE_SIZE, 3))
+                img = np.array(img) / 255.0
+                #img = np.expand_dims(img, axis=0)
 
-        result = self.model.predict(imgs)
-        print(result)
-        print(result.shape)
-        label_names = sorted(self.train_generator.class_indices.items(), key=lambda pair: pair[1])
-        label_names = np.array([key.title() for key, value in label_names])
-        labels = label_names[np.argmax(result, axis=-1)]
-        print(labels)
+                imgs.append(img)
+
+        if len(imgs) != 0:
+            result = self.model.predict(np.array(imgs))
+            print(result)
+            print(result.shape)
+            label_names = sorted(self.train_generator.class_indices.items(), key=lambda pair: pair[1])
+            label_names = np.array([key.title() for key, value in label_names])
+            labels = label_names[np.argmax(result, axis=-1)]
+            print(labels)
+        else:
+            print("No image")
 
     def save_model(self):
         print(" -----  Export your model  ----- ")
@@ -237,10 +241,10 @@ if __name__ == "__main__":
     print(" -----  Setup  ----- ")
     tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
 
-    m = MyModel("auto")
+    m = MyModel("auto_")
 
-    m.choice_feature_extractor()
-    m.choice_dataset_path()
+    m.choice_feature_extractor(0)
+    m.choice_dataset_path(1)
 
     m.init_model()
     m.check_predictions()
